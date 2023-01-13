@@ -1,0 +1,27 @@
+<p>{{'listado' | uppercase}} tmb |titlecase para nombres, para fechas |date:'longDate',,,para sueldo |currency: 'EUR', o currency:'S/.',,,,,,porcentajes |percent:'2,2' (2 enteros, 2 decimales)</p>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nro</th>
+      <th>Dni</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Fecha de nacimiento</th>
+      <th>Sueldo</th>
+      <th>Comisión</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of inp_datos; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{item.Dni}}</td>
+      <td>{{item.Nombres | lowercase }}</td>
+      <td>{{item.Apellidos | titlecase}}</td>
+      <td>{{item.FechaNac | date: 'longDate'}}</td>
+      <td>{{item.Sueldo | currency: 'EUR'}}</td>
+      <td>{{item.Comision | percent: '2.2'}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,86 @@
+<h1 class="text-center">FORMULARIO DE REGISTRO</h1>
+<h2 class="text-center">Formulario reactivo</h2>
+
+<section class="container-sm">
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <section class="form-group m-3">
+      <label for="dni">Dni:</label>
+      <input type="text" maxlength="8" class="form-control" [ngStyle]="{'border-color': dni?.invalid && (dni?.dirty || dni?.touched)?'red':'gray'}" formControlName="dni" id="dni">
+      <!--
+            <section *ngIf="dni?.invalid && (dni?.dirty || dni?.touched)">
+                <section *ngIf="dni?.errors?.['required']" class="alert alert-success">
+                    El DNI es obligatorio
+                </section>
+                <section *ngIf="dni?.errors?.['pattern']" class="alert alert-success">
+                    El DNI debe ser solo 8 digitos
+                </section>
+            </section>
+            -->
+    </section>
+
+    <section class="form-group m-3">
+      <label for="nombres">Nombre completo:</label>
+      <input type="text" class="form-control" formControlName="nombres">
+      <section *ngIf="nombres?.invalid && (nombres?.dirty || nombres?.touched)">
+        <section *ngIf="nombres?.errors?.['required']" class="alert alert-success">
+          El nombre es obligatorio
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="apellidos">Apellidos</label>
+      <input type="text" class="form-control" formControlName="apellidos">
+      <section *ngIf="apellidos?.invalid && (apellidos?.dirty || apellidos?.touched)">
+        <section *ngIf="apellidos?.errors?.['required']" class="alert alert-success">
+          El Apellido es obligatorio
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="fechanac">Fecha de Nacimiento</label>
+      <input type="date" class="form-control" formControlName="fechanac">
+      <section *ngIf="fechanac?.invalid && (fechanac?.dirty || fechanac?.touched)">
+        <section *ngIf="fechanac?.errors?.['required']" class="alert alert-success">
+          La fecha de nacimiento es obligatoria
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="sueldo">Sueldo</label>
+      <input type="number" class="form-control" formControlName="sueldo">
+      <section *ngIf="sueldo?.invalid && (sueldo?.dirty || sueldo?.touched)">
+        <section *ngIf="sueldo?.errors?.['required']" class="alert alert-success">
+          El sueldo es obligatorio
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="comision">Comision</label>
+      <input type="number" class="form-control" formControlName="comision">
+      <section *ngIf="comision?.invalid && (comision?.dirty || comision?.touched)">
+        <section *ngIf="comision?.errors?.['required']" class="alert alert-success">
+          La comisión es obligatoria
+        </section>
+        <section *ngIf="comision?.errors?.['min'] || comision?.errors?.['max']" class="alert alert-success">
+          La comisión no es valida
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <input type="submit" value="Enviar" class="btn btn-primary">
+      <input type="button" value="Refrescar" class="btn btn-success" (click)="Refrescar()">
+    </section>
+  </form>
+
+  <!-- incluimos el listado dentro del comp registro, vinculamos y ahora inp_datos es igual a datos -->
+  <!-- con location.reload() carga la pagde nuevo y los datos se pierden.
+  pero, con this.abcform.reset() se borra solo el contenido del form actual a los valores por default-->
+  <section>
+    <app-form-listado [inp_datos]="datos"></app-form-listado>
+  </section>
+</section>

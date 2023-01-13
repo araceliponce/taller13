@@ -1,0 +1,33 @@
+<div class="d-none">
+
+  <p>un input que devuelve 'resultado: VALOR DEL INPUT'</p>
+  <p> USO DE PIPES</p>
+  <form>
+    <!--   <label for="unTexto">Valor</label>
+  <input type="text" *ngModel="primer">
+  <p *ngIf="primer && primer.value">
+    Value: {{ primer.value }}
+  </p> -->
+  </form>
+
+
+  <p>un input para numeros,debajo un select 'Selecciona el tipo de moneda' opciones: usd,eur,etc y debajo y un parrafo con el mismo numero pero iniciando con el simbolo del tipo de moneda</p>
+  <p>CURRENCY PIPES</p>
+  <form [formGroup]="nuevoRegistroForm">
+    <label for="monto">Valor</label>
+    <input type="text" formControlName="monto" name="monto" id="monto">
+    <select class="form-control" name="currencies" id="currencies" formControlName="currencies">
+      <option *ngFor="let item of currencies" value="{{item.value}}">{{item.text}}</option>
+    </select>
+
+    <button>enviar</button>
+
+  </form>
+
+</div>
+
+
+
+
+
+<pre>{{unJson|json}}</pre>
